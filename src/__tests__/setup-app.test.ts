@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { AppRoutes } from '../core';
-import { app } from '../index';
+import app from '../index';
 
 describe('GET home route /', () => {
   it("should return 'Hello world!'", async () => {
