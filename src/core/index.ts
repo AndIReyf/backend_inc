@@ -1,1 +1,1 @@
-export {AppRoutes} from './types/routes'
+export { AppRoutes } from './types/routes';

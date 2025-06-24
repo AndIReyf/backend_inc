@@ -1,1 +1,1 @@
-export { DriverStatus } from './types'
+export { DriverStatus } from './types';

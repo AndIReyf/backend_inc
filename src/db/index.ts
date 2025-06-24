@@ -1,1 +1,1 @@
-export {db, type IDriver} from './db'
+export { db, type IDriver } from './db';

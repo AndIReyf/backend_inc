@@ -1,4 +1,4 @@
-import {DriverStatus} from "../drivers";
+import { DriverStatus } from '../drivers';
 
 export interface IDriver {
   id: string;
@@ -16,6 +16,6 @@ export const db: IDB = {
       id: '1',
       status: DriverStatus.Online,
       createdAt: new Date(),
-    }
-  ]
-}
+    },
+  ],
+};

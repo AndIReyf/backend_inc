@@ -1,5 +1,5 @@
-import express from "express";
-import { setupApp } from "./setup-app";
+import express from 'express';
+import { setupApp } from './setup-app';
 
 // создание приложения
 export const app = express();
