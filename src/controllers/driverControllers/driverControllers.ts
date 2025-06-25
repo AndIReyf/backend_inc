@@ -4,10 +4,10 @@ import { driversRepository } from '../../repositories';
 import { IDriver } from '../../routes';
 
 export const driverControllers = {
-  getAllDrivers: async (req: Request, res: Response) => {
+  getAllDrivers: (req: Request, res: Response) => {
     res.status(200).send(db.drivers);
   },
-  getDriverById: async (req: Request, res: Response) => {
+  getDriverById: (req: Request, res: Response) => {
     const driver = driversRepository.findDriverById(req.params.id);
 
     if (!driver) {
@@ -16,7 +16,7 @@ export const driverControllers = {
 
     res.status(200).send(driver);
   },
-  createNewDriver: async (req: Request, res: Response) => {
+  createNewDriver: (req: Request, res: Response) => {
     const newDriver: IDriver = {
       ...driversRepository.createDriver(),
       ...req.body,
