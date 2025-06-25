@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response, Request } from 'express';
 import { AppRoutes } from './core';
 import { driversRouter } from './routes';
 
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // основной роут
-app.get(AppRoutes.default, (req, res) => {
+app.get(AppRoutes.default, (req: Request, res: Response) => {
   res.status(200).send('Hello world!');
 });
 

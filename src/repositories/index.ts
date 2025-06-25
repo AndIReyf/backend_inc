@@ -1,1 +1,1 @@
-export {driversRepository} from './driversRepository/driversRepository'
+export { driversRepository } from './driversRepository/driversRepository';

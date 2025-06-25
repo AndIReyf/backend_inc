@@ -1,1 +1,1 @@
-export {driverControllers} from './driverControllers/driverControllers'
+export { driverControllers } from './driverControllers/driverControllers';

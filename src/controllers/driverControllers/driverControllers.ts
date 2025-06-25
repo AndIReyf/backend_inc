@@ -1,5 +1,5 @@
 import { db } from '../../db';
-import {Response, Request} from 'express';
+import { Response, Request } from 'express';
 import { driversRepository } from '../../repositories';
 import { IDriver } from '../../routes';
 
@@ -20,10 +20,10 @@ export const driverControllers = {
     const newDriver: IDriver = {
       ...driversRepository.createDriver(),
       ...req.body,
-    }
+    };
 
     db.drivers.push(newDriver);
 
     res.status(200).send(newDriver);
   },
-}
+};
