@@ -1,7 +1,4 @@
-export enum DriverStatus {
-  Online = 'Online',
-  Offline = 'Offline',
-}
+import { DriverStatus } from '../../db';
 
 export interface IDriver {
   id: string;

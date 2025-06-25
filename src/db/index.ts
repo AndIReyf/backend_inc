@@ -1,1 +1,1 @@
-export { db } from './db';
+export { db, DriverStatus } from './db';

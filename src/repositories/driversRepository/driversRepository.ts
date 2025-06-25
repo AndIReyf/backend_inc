@@ -1,5 +1,5 @@
-import { db } from '../../db';
-import { DriverStatus, IDriver } from '../../routes';
+import { db, DriverStatus } from '../../db';
+import { IDriver } from '../../routes';
 
 export const driversRepository = {
   findDriverById(id: string) {

@@ -1,4 +1,9 @@
-import { DriverStatus, IDriver } from '../routes';
+import { IDriver } from '../routes';
+
+export enum DriverStatus {
+  Online = 'Online',
+  Offline = 'Offline',
+}
 
 interface IDB {
   drivers: IDriver[];

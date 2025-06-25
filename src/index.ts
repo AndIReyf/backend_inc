@@ -9,13 +9,18 @@ const PORT = process.env.PORT || 5001;
 const app = express();
 
 app.use(express.json());
-
-// основной роут
-app.get(AppRoutes.default, (req: Request, res: Response) => {
-  res.status(200).send('Hello world!');
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
 });
 
 app.use(AppRoutes.drivers, driversRouter);
+
+// основной роут
+app.get(AppRoutes.default, (req: Request, res: Response) => {
+  res.status(200).send('Hello!');
+});
 
 // запуск приложения
 app.listen(PORT, () => {
