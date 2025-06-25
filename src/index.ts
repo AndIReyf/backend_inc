@@ -1,12 +1,21 @@
 import express from 'express';
-import { setupApp } from './setup-app';
-
-// создание приложения
-const app = express();
-setupApp(app);
+import { AppRoutes } from './core';
+import { driversRouter } from './routes';
 
 // порт приложения
 const PORT = process.env.PORT || 5001;
+
+// создание приложения
+const app = express();
+
+app.use(express.json());
+
+// основной роут
+app.get(AppRoutes.default, (req, res) => {
+  res.status(200).send('Hello world!');
+});
+
+app.use(AppRoutes.drivers, driversRouter);
 
 // запуск приложения
 app.listen(PORT, () => {
