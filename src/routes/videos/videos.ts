@@ -13,7 +13,7 @@ videosRouter.get(AppRoutes.byId, (req, res) => {
   const video = db.videos.find((video) => video.id === +req.params.id);
 
   if (!video) {
-    res.status(404);
+    res.status(404).send('Not Found');
     return;
   }
 
@@ -58,7 +58,7 @@ videosRouter.put(
 
     db.videos[videoIndex] = { ...db.videos[videoIndex], ...req.body };
 
-    res.status(204).send(db.videos[videoIndex]);
+    res.status(204);
   },
 );
 
