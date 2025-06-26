@@ -34,7 +34,7 @@ videosRouter.post(
       canBeDownloaded: false,
       minAgeRestriction: null,
       createdAt: '2025-06-27T15:57:07.215Z',
-      publicationDate: '2025-06-27T15:57:07.215Z',
+      publicationDate: '2025-06-28T15:57:07.215Z',
     };
 
     db.videos.push(newVideo);

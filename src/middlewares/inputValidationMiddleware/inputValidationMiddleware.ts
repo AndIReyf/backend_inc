@@ -1,5 +1,5 @@
 import { NextFunction, Response } from 'express';
-import { isValidDateString, isValidResolutionArray } from '../../core';
+import { isValidISOString, isValidResolutionArray } from '../../core';
 import { IVideoUpdateRequest } from '../../routes';
 
 interface IError {
@@ -40,7 +40,7 @@ export const inputValidationMiddleware = (
     });
   }
 
-  if (typeof author !== 'string' || (author && author.length > 40)) {
+  if (typeof author !== 'string' || (author && author.length > 20)) {
     error.errorsMessages.push({
       message: 'Invalid author, should be type of string',
       field: 'author',
@@ -54,7 +54,7 @@ export const inputValidationMiddleware = (
     });
   }
 
-  if (publicationDate && !isValidDateString(publicationDate)) {
+  if (publicationDate && !isValidISOString(publicationDate)) {
     error.errorsMessages.push({
       message: 'Invalid publicationDate, should be type of string',
       field: 'publicationDate',

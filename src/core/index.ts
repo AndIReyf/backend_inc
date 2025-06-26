@@ -3,4 +3,4 @@ export {
   isValidResolutionArray,
   type ResolutionType,
 } from './utils/isValidResolutionArray/isValidResolutionArray';
-export { isValidDateString } from './utils/date/date';
+export { isValidISOString } from './utils/date/date';
