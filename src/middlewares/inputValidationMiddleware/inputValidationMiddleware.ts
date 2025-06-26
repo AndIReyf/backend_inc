@@ -33,14 +33,14 @@ export const inputValidationMiddleware = (
     });
   }
 
-  if (typeof title !== 'string') {
+  if (typeof title !== 'string' || (title && title.length > 40)) {
     error.errorsMessages.push({
       message: 'Invalid title, should be type of string',
       field: 'title',
     });
   }
 
-  if (typeof author !== 'string') {
+  if (typeof author !== 'string' || (author && author.length > 40)) {
     error.errorsMessages.push({
       message: 'Invalid author, should be type of string',
       field: 'author',
