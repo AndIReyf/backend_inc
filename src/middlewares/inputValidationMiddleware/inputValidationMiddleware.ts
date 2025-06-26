@@ -24,11 +24,9 @@ export const inputValidationMiddleware = (
     publicationDate,
     minAgeRestriction,
   } = req.body;
-  const error: IErrorMsg = {errorsMessages: []};
+  const error: IErrorMsg = { errorsMessages: [] };
 
-  if (
-    !isValidResolutionArray(availableResolutions)
-  ) {
+  if (!isValidResolutionArray(availableResolutions)) {
     error.errorsMessages.push({
       message: 'Invalid Resolution ID',
       field: 'availableResolutions',
@@ -70,9 +68,6 @@ export const inputValidationMiddleware = (
       field: 'minAgeRestriction',
     });
   }
-  console.log('publicationDate', publicationDate);
-  console.log('canBeDownloaded', canBeDownloaded);
-  console.log(error);
 
   if (error.errorsMessages.length > 0) {
     res.status(400).send(error);
