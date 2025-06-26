@@ -12,6 +12,7 @@ export const driverControllers = {
 
     if (!driver) {
       res.status(404).send({ message: 'No driver found!' });
+      return;
     }
 
     res.status(200).send(driver);

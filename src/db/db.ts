@@ -1,4 +1,4 @@
-import { IDriver } from '../routes';
+import { IDriver, IVideos } from '../routes';
 
 export enum DriverStatus {
   Online = 'Online',
@@ -7,6 +7,7 @@ export enum DriverStatus {
 
 interface IDB {
   drivers: IDriver[];
+  videos: IVideos[];
 }
 
 export const db: IDB = {
@@ -25,6 +26,18 @@ export const db: IDB = {
       id: '3',
       status: DriverStatus.Online,
       createdAt: new Date(),
+    },
+  ],
+  videos: [
+    {
+      id: 0,
+      title: 'string',
+      author: 'string',
+      canBeDownloaded: true,
+      minAgeRestriction: null,
+      createdAt: new Date().toISOString(),
+      publicationDate: new Date().toISOString(),
+      availableResolutions: ['P144'],
     },
   ],
 };

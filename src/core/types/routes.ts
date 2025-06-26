@@ -1,7 +1,8 @@
 export enum AppRoutes {
   default = '/',
   drivers = '/drivers',
-  getById = '/:id',
-  tests = '/tests',
+  videos = '/videos',
+  byId = '/:id',
+  tests = '/testing',
   allData = '/all-data',
 }

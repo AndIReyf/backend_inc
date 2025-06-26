@@ -2,10 +2,10 @@
   "name": "backend_inc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "watch": "tsc -w",
-    "dev": "nodemon --inspect dist/index.js",
+    "dev": "nodemon --inspect dist/main.js",
     "jest": "jest -i",
     "lint": "eslint --fix .",
     "format": "prettier --write ."
