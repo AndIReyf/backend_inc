@@ -3,12 +3,12 @@ import { isValidDateString, isValidResolutionArray } from '../../core';
 import { IVideoUpdateRequest } from '../../routes';
 
 interface IError {
-  message: string;
-  field: string;
+  message?: string;
+  field?: string;
 }
 
 interface IErrorMsg {
-  errorsMessages?: IError[];
+  errorsMessages: IError[];
 }
 
 export const inputValidationMiddleware = (
@@ -24,56 +24,57 @@ export const inputValidationMiddleware = (
     publicationDate,
     minAgeRestriction,
   } = req.body;
-  const error: IErrorMsg = {};
+  const error: IErrorMsg = {errorsMessages: []};
 
   if (
-    availableResolutions &&
-    availableResolutions.length > 0 &&
     !isValidResolutionArray(availableResolutions)
   ) {
-    error.errorsMessages?.push({
+    error.errorsMessages.push({
       message: 'Invalid Resolution ID',
-      field: 'availableResolutions: ResolutionType[]',
+      field: 'availableResolutions',
     });
   }
 
-  if (title && typeof title !== 'string') {
-    error.errorsMessages?.push({
+  if (typeof title !== 'string') {
+    error.errorsMessages.push({
       message: 'Invalid title, should be type of string',
-      field: 'title: string',
+      field: 'title',
     });
   }
 
-  if (author && typeof author !== 'string') {
-    error.errorsMessages?.push({
+  if (typeof author !== 'string') {
+    error.errorsMessages.push({
       message: 'Invalid author, should be type of string',
-      field: 'author: string',
+      field: 'author',
     });
   }
 
-  if (canBeDownloaded && typeof canBeDownloaded !== 'boolean') {
-    error.errorsMessages?.push({
+  if (canBeDownloaded !== undefined && typeof canBeDownloaded !== 'boolean') {
+    error.errorsMessages.push({
       message: 'Invalid canBeDownloaded, should be type of boolean',
-      field: 'canBeDownloaded: boolean',
+      field: 'canBeDownloaded',
     });
   }
 
-  if (!isValidDateString(publicationDate)) {
-    error.errorsMessages?.push({
+  if (publicationDate && !isValidDateString(publicationDate)) {
+    error.errorsMessages.push({
       message: 'Invalid publicationDate, should be type of string',
-      field: 'publicationDate: string',
+      field: 'publicationDate',
     });
   }
 
   if (minAgeRestriction && (minAgeRestriction < 1 || minAgeRestriction > 18)) {
-    error.errorsMessages?.push({
+    error.errorsMessages.push({
       message:
         'Invalid minAgeRestriction, should be type of (Range1to18 | null)',
-      field: 'minAgeRestriction: Range1to18 | null',
+      field: 'minAgeRestriction',
     });
   }
+  console.log('publicationDate', publicationDate);
+  console.log('canBeDownloaded', canBeDownloaded);
+  console.log(error);
 
-  if (Object.keys(error).length !== 0) {
+  if (error.errorsMessages.length > 0) {
     res.status(400).send(error);
   } else {
     next();

@@ -31,7 +31,7 @@ videosRouter.post(
       title,
       author,
       availableResolutions,
-      canBeDownloaded: true,
+      canBeDownloaded: false,
       minAgeRestriction: null,
       createdAt: new Date().toISOString(),
       publicationDate: new Date().toISOString(),
@@ -58,7 +58,7 @@ videosRouter.put(
 
     db.videos[videoIndex] = { ...db.videos[videoIndex], ...req.body };
 
-    res.status(204);
+    res.status(204).end();
   },
 );
 
@@ -72,5 +72,5 @@ videosRouter.delete(AppRoutes.byId, (req, res) => {
 
   db.videos = db.videos.filter((video) => video.id !== +req.params.id);
 
-  res.status(204);
+  res.status(204).end();
 });
