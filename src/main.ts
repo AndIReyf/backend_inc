@@ -3,6 +3,7 @@ import { AppRoutes } from './core';
 import {
   blogsRouter,
   driversRouter,
+  postsRouter,
   testingRouter,
   videosRouter,
 } from './routes';
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(AppRoutes.drivers, driversRouter);
 app.use(AppRoutes.videos, videosRouter);
 app.use(AppRoutes.blogs, blogsRouter);
+app.use(AppRoutes.posts, postsRouter);
 app.use(AppRoutes.tests, testingRouter);
 
 app.get(AppRoutes.default, (req: Request, res: Response) => {

@@ -1,12 +1,12 @@
 import { Request } from 'express';
 
-export interface IBlogs {
+export interface IBlog {
   id: string;
   name: string;
   description: string;
   websiteUrl: string;
 }
 
-export interface IBlogsRequest extends Request {
-  body: IBlogs;
+export interface IBlogRequest extends Request {
+  body: IBlog;
 }

@@ -3,7 +3,7 @@ import { videoControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
 import { db } from '../../db';
 import { videoValidationMiddleware } from '../../middlewares';
-import { IVideoCreateRequest, IVideos, IVideoUpdateRequest } from './types';
+import { IVideoCreateRequest, IVideo, IVideoUpdateRequest } from './types';
 
 export const videosRouter = Router();
 

@@ -1,4 +1,4 @@
-import { IDriver, IVideos, IBlogs } from '../routes';
+import { IDriver, IVideo, IBlog, IPost } from '../routes';
 
 export enum DriverStatus {
   Online = 'Online',
@@ -7,8 +7,9 @@ export enum DriverStatus {
 
 interface IDB {
   drivers: IDriver[];
-  videos: IVideos[];
-  blogs: IBlogs[];
+  videos: IVideo[];
+  blogs: IBlog[];
+  posts: IPost[];
 }
 
 export const db: IDB = {
@@ -31,7 +32,7 @@ export const db: IDB = {
   ],
   videos: [
     {
-      id: 0,
+      id: 1,
       title: 'string',
       author: 'string',
       canBeDownloaded: true,
@@ -53,6 +54,24 @@ export const db: IDB = {
       name: 'React',
       description: 'Some descriptions',
       websiteUrl: 'https://react.dev',
+    },
+  ],
+  posts: [
+    {
+      id: '1',
+      title: 'Express or Nest',
+      shortDescription: 'What should to know about node.js',
+      content: 'Some content',
+      blogId: '1',
+      blogName: 'Typescript',
+    },
+    {
+      id: '2',
+      title: 'Next.js',
+      shortDescription: 'The Best SSR?',
+      content: 'Some content',
+      blogId: '2',
+      blogName: 'React',
     },
   ],
 };

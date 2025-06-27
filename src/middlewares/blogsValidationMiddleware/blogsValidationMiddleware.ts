@@ -1,30 +1,34 @@
 import { NextFunction, Response } from 'express';
 import { IErrorMsg, urlPattern } from '../../core';
-import { IBlogsRequest } from '../../routes';
+import { IBlogRequest } from '../../routes';
 
 export const blogsValidationMiddleware = (
-  req: IBlogsRequest,
+  req: IBlogRequest,
   res: Response,
   next: NextFunction,
 ) => {
   const { name, description, websiteUrl } = req.body;
   const error: IErrorMsg = { errorsMessages: [] };
 
-  if (typeof name !== 'string' || (name && name.length > 20)) {
+  if (typeof name !== 'string' || (name && name.length > 15)) {
     error.errorsMessages.push({
       message: 'Invalid name, should be type of string',
       field: 'name',
     });
   }
 
-  if (typeof description !== 'string') {
+  if (typeof description !== 'string' || (name && name.length > 500)) {
     error.errorsMessages.push({
       message: 'Invalid description, should be type of string',
       field: 'description',
     });
   }
 
-  if (typeof websiteUrl !== 'string' || !urlPattern.test(websiteUrl)) {
+  if (
+    typeof websiteUrl !== 'string' ||
+    !urlPattern.test(websiteUrl) ||
+    (websiteUrl && websiteUrl.length > 100)
+  ) {
     error.errorsMessages.push({
       message: 'Invalid websiteUrl, should be valid URL string',
       field: 'websiteUrl',

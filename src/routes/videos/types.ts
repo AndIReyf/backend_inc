@@ -21,7 +21,7 @@ type Range1to18 =
   | 17
   | 18;
 
-export interface IVideos {
+export interface IVideo {
   id: number;
   title: string;
   author: string;
@@ -33,9 +33,9 @@ export interface IVideos {
 }
 
 interface IVideoCreateParams
-  extends Pick<IVideos, 'title' | 'author' | 'availableResolutions'> {}
+  extends Pick<IVideo, 'title' | 'author' | 'availableResolutions'> {}
 
-interface IVideoUpdateParams extends Omit<IVideos, 'id' | 'createdAt'> {}
+interface IVideoUpdateParams extends Omit<IVideo, 'id' | 'createdAt'> {}
 
 export interface IVideoCreateRequest extends Request {
   body: IVideoCreateParams;

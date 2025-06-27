@@ -1,10 +1,6 @@
 import { Response, Request } from 'express';
 import { db } from '../../db';
-import {
-  IVideoCreateRequest,
-  IVideos,
-  IVideoUpdateRequest,
-} from '../../routes';
+import { IVideoCreateRequest, IVideo, IVideoUpdateRequest } from '../../routes';
 
 export const videoControllers = {
   getVideos: (req: Request, res: Response) => {
@@ -23,7 +19,7 @@ export const videoControllers = {
   createNewVideo: (req: IVideoCreateRequest, res: Response) => {
     const { title, author, availableResolutions } = req.body;
 
-    const newVideo: IVideos = {
+    const newVideo: IVideo = {
       id: db.videos.length ? db.videos.length + 1 : 1,
       title,
       author,
