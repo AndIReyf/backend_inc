@@ -1,43 +1,20 @@
-import { NextFunction, Response } from 'express';
-import { IErrorMsg, urlPattern } from '../../core';
-import { IBlogRequest } from '../../routes';
+import { body, ValidationChain } from 'express-validator';
+import { urlPattern } from '../../core';
+import { handleValidationErrors } from '../handleValidationErrors/handleValidationErrors';
 
-export const blogsValidationMiddleware = (
-  req: IBlogRequest,
-  res: Response,
-  next: NextFunction,
-) => {
-  const { name, description, websiteUrl } = req.body;
-  const error: IErrorMsg = { errorsMessages: [] };
+const blogsValidationRules: ValidationChain[] = [
+  body('name').notEmpty().isString().isLength({ min: 1, max: 15 }),
+  body('description').notEmpty().isString().isLength({ min: 1, max: 500 }),
+  body('websiteUrl')
+    .notEmpty()
+    .isString()
+    .custom((websiteUrl: string): boolean => {
+      return urlPattern.test(websiteUrl);
+    })
+    .withMessage('Invalid websiteUrl, should be valid URL string'),
+];
 
-  if (typeof name !== 'string' || (name && name.length > 15)) {
-    error.errorsMessages.push({
-      message: 'Invalid name, should be type of string',
-      field: 'name',
-    });
-  }
-
-  if (typeof description !== 'string' || (name && name.length > 500)) {
-    error.errorsMessages.push({
-      message: 'Invalid description, should be type of string',
-      field: 'description',
-    });
-  }
-
-  if (
-    typeof websiteUrl !== 'string' ||
-    !urlPattern.test(websiteUrl) ||
-    (websiteUrl && websiteUrl.length > 100)
-  ) {
-    error.errorsMessages.push({
-      message: 'Invalid websiteUrl, should be valid URL string',
-      field: 'websiteUrl',
-    });
-  }
-
-  if (error.errorsMessages.length > 0) {
-    res.status(400).send(error);
-  } else {
-    next();
-  }
-};
+export const blogsValidationMiddleware = [
+  ...blogsValidationRules,
+  handleValidationErrors,
+];
