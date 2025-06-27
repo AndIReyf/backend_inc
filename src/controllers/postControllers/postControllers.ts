@@ -23,6 +23,8 @@ export const postControllers = {
       ...req.body,
     };
 
+    db.posts.push(newPost);
+
     res.status(201).send(newPost);
   },
   updatePost: async (req: Request, res: Response) => {

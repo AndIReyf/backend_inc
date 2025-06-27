@@ -22,6 +22,8 @@ export const blogControllers = {
       id: db.blogs.length ? String(db.blogs.length + 1) : '1',
     };
 
+    db.blogs.push(newBlog);
+
     res.status(201).send(newBlog);
   },
   updateBlog: async (req: Request, res: Response) => {
