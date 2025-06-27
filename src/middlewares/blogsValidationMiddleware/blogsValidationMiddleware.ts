@@ -3,11 +3,13 @@ import { urlPattern } from '../../core';
 import { handleValidationErrors } from '../handleValidationErrors/handleValidationErrors';
 
 const blogsValidationRules: ValidationChain[] = [
-  body('name').notEmpty().isString().isLength({ min: 1, max: 15 }),
-  body('description').notEmpty().isString().isLength({ min: 1, max: 500 }),
+  body('name').trim().notEmpty().isString().isLength({ min: 1, max: 15 }),
+  body('description').trim().notEmpty().isString().isLength({ min: 1, max: 500 }),
   body('websiteUrl')
+    .trim()
     .notEmpty()
     .isString()
+    .isLength({ min: 1, max: 100 })
     .custom((websiteUrl: string): boolean => {
       return urlPattern.test(websiteUrl);
     })
