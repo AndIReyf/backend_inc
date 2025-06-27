@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from 'express';
 
-const USER_TOKEN = 'YWRtaW4gcXdlcnR5='; // admin qwerty
+const USER_TOKEN = 'YWRtaW46cXdlcnR5'; // admin qwerty
 
 export const authValidationMiddleware = (
   req: Request,
@@ -10,8 +10,8 @@ export const authValidationMiddleware = (
   const authHeader = req.headers.authorization;
   let unauthorized = false;
 
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.substring(7);
+  if (authHeader && authHeader.startsWith('Basic ')) {
+    const token = authHeader.substring(6);
     unauthorized = token === USER_TOKEN;
   }
 
