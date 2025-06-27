@@ -1,17 +1,12 @@
 import { NextFunction, Response } from 'express';
-import { isValidISOString, isValidResolutionArray } from '../../core';
+import {
+  IErrorMsg,
+  isValidISOString,
+  isValidResolutionArray,
+} from '../../core';
 import { IVideoUpdateRequest } from '../../routes';
 
-interface IError {
-  message?: string;
-  field?: string;
-}
-
-interface IErrorMsg {
-  errorsMessages: IError[];
-}
-
-export const videoCreateUpdateValidationMiddleware = (
+export const videoValidationMiddleware = (
   req: IVideoUpdateRequest,
   res: Response,
   next: NextFunction,

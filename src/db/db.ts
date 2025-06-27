@@ -1,4 +1,4 @@
-import { IDriver, IVideos } from '../routes';
+import { IDriver, IVideos, IBlogs } from '../routes';
 
 export enum DriverStatus {
   Online = 'Online',
@@ -8,6 +8,7 @@ export enum DriverStatus {
 interface IDB {
   drivers: IDriver[];
   videos: IVideos[];
+  blogs: IBlogs[];
 }
 
 export const db: IDB = {
@@ -38,6 +39,20 @@ export const db: IDB = {
       createdAt: new Date().toISOString(),
       publicationDate: new Date().toISOString(),
       availableResolutions: ['P144'],
+    },
+  ],
+  blogs: [
+    {
+      id: '1',
+      name: 'Typescript',
+      description: 'Some descriptions',
+      websiteUrl: 'https://www.typescriptlang.org',
+    },
+    {
+      id: '2',
+      name: 'React',
+      description: 'Some descriptions',
+      websiteUrl: 'https://react.dev',
     },
   ],
 };

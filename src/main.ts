@@ -1,6 +1,11 @@
 import express, { Response, Request } from 'express';
 import { AppRoutes } from './core';
-import { driversRouter, testingRouter, videosRouter } from './routes';
+import {
+  blogsRouter,
+  driversRouter,
+  testingRouter,
+  videosRouter,
+} from './routes';
 
 const PORT = process.env.PORT || 5001;
 
@@ -9,6 +14,7 @@ app.use(express.json());
 
 app.use(AppRoutes.drivers, driversRouter);
 app.use(AppRoutes.videos, videosRouter);
+app.use(AppRoutes.blogs, blogsRouter);
 app.use(AppRoutes.tests, testingRouter);
 
 app.get(AppRoutes.default, (req: Request, res: Response) => {
