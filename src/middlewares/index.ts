@@ -1,1 +1,1 @@
-export { inputValidationMiddleware } from './inputValidationMiddleware/inputValidationMiddleware';
+export { videoCreateUpdateValidationMiddleware } from './videoCreateUpdateValidationMiddleware/videoCreateUpdateValidationMiddleware';

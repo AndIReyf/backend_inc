@@ -32,10 +32,10 @@ export interface IVideos {
   availableResolutions: ResolutionType[];
 }
 
-export interface IVideoCreateParams
+interface IVideoCreateParams
   extends Pick<IVideos, 'title' | 'author' | 'availableResolutions'> {}
 
-export interface IVideoUpdateParams extends Omit<IVideos, 'id' | 'createdAt'> {}
+interface IVideoUpdateParams extends Omit<IVideos, 'id' | 'createdAt'> {}
 
 export interface IVideoCreateRequest extends Request {
   body: IVideoCreateParams;

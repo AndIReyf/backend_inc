@@ -11,7 +11,7 @@ interface IErrorMsg {
   errorsMessages: IError[];
 }
 
-export const inputValidationMiddleware = (
+export const videoCreateUpdateValidationMiddleware = (
   req: IVideoUpdateRequest,
   res: Response,
   next: NextFunction,
