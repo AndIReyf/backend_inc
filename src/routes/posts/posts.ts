@@ -2,8 +2,8 @@ import { Router } from 'express';
 import { postControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
 import {
-  authValidationMiddleware,
-  postsValidationMiddleware,
+  authValidation,
+  postsValidation,
 } from '../../middlewares';
 
 export const postsRouter = Router();
@@ -13,20 +13,20 @@ postsRouter.get(AppRoutes.byId, postControllers.getPostById);
 
 postsRouter.post(
   AppRoutes.default,
-  authValidationMiddleware,
-  postsValidationMiddleware,
+  authValidation,
+  postsValidation,
   postControllers.createPost,
 );
 
 postsRouter.put(
   AppRoutes.byId,
-  authValidationMiddleware,
-  postsValidationMiddleware,
+  authValidation,
+  postsValidation,
   postControllers.updatePost,
 );
 
 postsRouter.delete(
   AppRoutes.byId,
-  authValidationMiddleware,
+  authValidation,
   postControllers.deletePost,
 );

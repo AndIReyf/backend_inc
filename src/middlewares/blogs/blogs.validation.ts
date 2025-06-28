@@ -1,6 +1,6 @@
 import { body, ValidationChain } from 'express-validator';
 import { urlPattern } from '../../core';
-import { handleValidationErrors } from '../handleValidationErrors/handleValidationErrors';
+import { handleValidationErrors } from '../common/handle.validation.errors';
 
 const blogsValidationRules: ValidationChain[] = [
   body('name').trim().notEmpty().isString().isLength({ min: 1, max: 15 }),
@@ -20,7 +20,7 @@ const blogsValidationRules: ValidationChain[] = [
     .withMessage('Invalid websiteUrl, should be valid URL string'),
 ];
 
-export const blogsValidationMiddleware = [
+export const blogsValidation = [
   ...blogsValidationRules,
   handleValidationErrors,
 ];

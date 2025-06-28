@@ -2,7 +2,7 @@ import { NextFunction, Response, Request } from 'express';
 
 const USER_TOKEN = 'YWRtaW46cXdlcnR5'; // admin qwerty
 
-export const authValidationMiddleware = (
+export const authValidation = (
   req: Request,
   res: Response,
   next: NextFunction,

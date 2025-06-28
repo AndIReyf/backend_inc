@@ -2,8 +2,8 @@ import { Router } from 'express';
 import { blogControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
 import {
-  authValidationMiddleware,
-  blogsValidationMiddleware,
+  authValidation,
+  blogsValidation,
 } from '../../middlewares';
 
 export const blogsRouter = Router();
@@ -13,20 +13,20 @@ blogsRouter.get(AppRoutes.byId, blogControllers.getBlogById);
 
 blogsRouter.post(
   AppRoutes.default,
-  authValidationMiddleware,
-  blogsValidationMiddleware,
+  authValidation,
+  blogsValidation,
   blogControllers.createBlog,
 );
 
 blogsRouter.put(
   AppRoutes.byId,
-  authValidationMiddleware,
-  blogsValidationMiddleware,
+  authValidation,
+  blogsValidation,
   blogControllers.updateBlog,
 );
 
 blogsRouter.delete(
   AppRoutes.byId,
-  authValidationMiddleware,
+  authValidation,
   blogControllers.deleteBlog,
 );

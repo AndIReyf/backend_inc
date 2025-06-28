@@ -1,5 +1,5 @@
-export { videoValidationMiddleware } from './videoValidationMiddleware/videoValidationMiddleware';
-export { authValidationMiddleware } from './authValidationMiddleware/authValidationMiddleware';
-export { blogsValidationMiddleware } from './blogsValidationMiddleware/blogsValidationMiddleware';
-export { postsValidationMiddleware } from './postsValidationMiddleware/postsValidationMiddleware';
-export { handleValidationErrors } from './handleValidationErrors/handleValidationErrors';
+export { videoValidation } from './video/video.validation';
+export { authValidation } from './auth/auth.validation';
+export { blogsValidation } from './blogs/blogs.validation';
+export { postsValidation } from './posts/posts.validation';
+export { handleValidationErrors } from './common/handle.validation.errors';

@@ -1,4 +1,4 @@
-export { driverControllers } from './driverControllers/driverControllers';
-export { videoControllers } from './videoControllers/videoControllers';
-export { blogControllers } from './blogControllers/blogControllers';
-export { postControllers } from './postControllers/postControllers';
+export { driverControllers } from './driver/driver.controllers';
+export { videoControllers } from './video/video.controllers';
+export { blogControllers } from './blog/blog.controllers';
+export { postControllers } from './post/post.controllers';

@@ -1,5 +1,5 @@
 import { body, ValidationChain } from 'express-validator';
-import { handleValidationErrors } from '../handleValidationErrors/handleValidationErrors';
+import { handleValidationErrors } from '../common/handle.validation.errors';
 
 const postValidationRules: ValidationChain[] = [
   body('title').trim().notEmpty().isString().isLength({ min: 1, max: 30 }),
@@ -12,7 +12,7 @@ const postValidationRules: ValidationChain[] = [
   body('blogId').trim().notEmpty().isString(),
 ];
 
-export const postsValidationMiddleware = [
+export const postsValidation = [
   ...postValidationRules,
   handleValidationErrors,
 ];

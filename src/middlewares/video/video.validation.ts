@@ -6,7 +6,7 @@ import {
 } from '../../core';
 import { IVideoUpdateRequest } from '../../routes';
 
-export const videoValidationMiddleware = (
+export const videoValidation = (
   req: IVideoUpdateRequest,
   res: Response,
   next: NextFunction,
