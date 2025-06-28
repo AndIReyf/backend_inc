@@ -4,7 +4,11 @@ import { handleValidationErrors } from '../handleValidationErrors/handleValidati
 
 const blogsValidationRules: ValidationChain[] = [
   body('name').trim().notEmpty().isString().isLength({ min: 1, max: 15 }),
-  body('description').trim().notEmpty().isString().isLength({ min: 1, max: 500 }),
+  body('description')
+    .trim()
+    .notEmpty()
+    .isString()
+    .isLength({ min: 1, max: 500 }),
   body('websiteUrl')
     .trim()
     .notEmpty()

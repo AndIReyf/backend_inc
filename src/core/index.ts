@@ -6,3 +6,4 @@ export {
 export { isValidISOString } from './utils/date/date';
 export { type IErrorMsg } from './types/error';
 export { urlPattern } from './regex/regex';
+export { createBasicAuthHeader } from './utils/createBasicAuthHeader/createBasicAuthHeader';
