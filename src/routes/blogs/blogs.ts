@@ -1,10 +1,7 @@
 import { Router } from 'express';
 import { blogControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
-import {
-  authValidation,
-  blogsValidation,
-} from '../../middlewares';
+import { authValidation, blogsValidation } from '../../middlewares';
 
 export const blogsRouter = Router();
 
@@ -25,8 +22,4 @@ blogsRouter.put(
   blogControllers.updateBlog,
 );
 
-blogsRouter.delete(
-  AppRoutes.byId,
-  authValidation,
-  blogControllers.deleteBlog,
-);
+blogsRouter.delete(AppRoutes.byId, authValidation, blogControllers.deleteBlog);

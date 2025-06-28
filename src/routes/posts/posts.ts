@@ -1,10 +1,7 @@
 import { Router } from 'express';
 import { postControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
-import {
-  authValidation,
-  postsValidation,
-} from '../../middlewares';
+import { authValidation, postsValidation } from '../../middlewares';
 
 export const postsRouter = Router();
 
@@ -25,8 +22,4 @@ postsRouter.put(
   postControllers.updatePost,
 );
 
-postsRouter.delete(
-  AppRoutes.byId,
-  authValidation,
-  postControllers.deletePost,
-);
+postsRouter.delete(AppRoutes.byId, authValidation, postControllers.deletePost);

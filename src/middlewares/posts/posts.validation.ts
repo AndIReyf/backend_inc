@@ -12,7 +12,4 @@ const postValidationRules: ValidationChain[] = [
   body('blogId').trim().notEmpty().isString(),
 ];
 
-export const postsValidation = [
-  ...postValidationRules,
-  handleValidationErrors,
-];
+export const postsValidation = [...postValidationRules, handleValidationErrors];
