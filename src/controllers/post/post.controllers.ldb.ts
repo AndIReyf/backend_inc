@@ -2,7 +2,7 @@ import { db } from '../../db';
 import { Request, Response } from 'express';
 import { IPost, IPostRequest } from '../../routes';
 
-export const postControllers = {
+export const postControllersLdb = {
   getAllPosts: async (req: Request, res: Response) => {
     res.status(200).send(db.posts);
   },

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { blogControllers } from '../../controllers';
+import { blogControllersMdb as blogControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
 import { authValidation, blogsValidation } from '../../middlewares';
 

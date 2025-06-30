@@ -1,5 +1,6 @@
 import express, { Response, Request } from 'express';
 import { AppRoutes } from './core';
+import { connectMongoDB } from './db';
 import {
   blogsRouter,
   driversRouter,
@@ -23,8 +24,14 @@ app.get(AppRoutes.default, (req: Request, res: Response) => {
   res.status(200).send('Hello!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server started on port:`, PORT);
-});
+const startServer = async () => {
+  await connectMongoDB();
+
+  app.listen(PORT, () => {
+    console.log(`Server started on port:`, PORT);
+  });
+};
+
+startServer();
 
 export default app;

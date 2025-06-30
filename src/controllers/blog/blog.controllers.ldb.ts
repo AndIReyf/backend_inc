@@ -2,7 +2,7 @@ import { db } from '../../db';
 import { Request, Response } from 'express';
 import { IBlog, IBlogRequest } from '../../routes';
 
-export const blogControllers = {
+export const logControllersLdb = {
   getAllBlogs: async (req: Request, res: Response) => {
     res.status(200).send(db.blogs);
   },

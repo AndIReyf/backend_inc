@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { postControllers } from '../../controllers';
+import { postControllersMdb as postControllers } from '../../controllers';
 import { AppRoutes } from '../../core';
 import { authValidation, postsValidation } from '../../middlewares';
 
