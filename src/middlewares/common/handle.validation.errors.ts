@@ -1,23 +1,28 @@
 import { NextFunction, Request, Response } from 'express';
 import { ValidationError, validationResult } from 'express-validator';
 import { IErrorMsg } from '../../core';
+import { IError } from '../../core/types/error';
+
+const formatErrors = (error: ValidationError) => {
+  const err: IError = {};
+
+  if ('path' in error) {
+    err.field = error.path
+    err.message = error.msg
+  }
+
+  return err
+};
 
 export const handleValidationErrors = (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  const error: IErrorMsg = { errorsMessages: [] };
-  const errors = validationResult(req);
+  const errors = validationResult(req).formatWith(formatErrors).array();
 
-  if (!errors.isEmpty()) {
-    errors.array({ onlyFirstError: true }).forEach((err: ValidationError) => {
-      if ('path' in err) {
-        error.errorsMessages.push({ field: err.path, message: err.msg });
-      }
-    });
-
-    res.status(400).send(error);
+  if (errors.length > 0) {
+    res.status(400).send({errorsMessages: errors} as IErrorMsg);
     return;
   }
 

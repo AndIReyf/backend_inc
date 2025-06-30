@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { IPost, IPostRequest } from '../../routes';
-import { postsCollectionDB as db } from '../../db';
+import { postsDBCollection as db } from '../../db';
 
 export const postControllersMdb = {
   getAllPosts: async (req: Request, res: Response) => {

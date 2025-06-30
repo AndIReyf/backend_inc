@@ -1,6 +1,6 @@
 export { db, DriverStatus } from './local.db';
 export {
   connectMongoDB,
-  blogsCollectionDB,
-  postsCollectionDB,
+  blogsDBCollection,
+  postsDBCollection,
 } from './mongo.db';

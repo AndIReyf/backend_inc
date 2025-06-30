@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { blogsCollectionDB as db } from '../../db';
+import { blogsDBCollection as db } from '../../db';
 import { IBlog, IBlogRequest } from '../../routes';
 
 export const blogControllersMdb = {
