@@ -1,8 +1,17 @@
 import { MongoClient } from 'mongodb';
 import { IBlog, IPost } from '../routes';
+import 'dotenv/config';
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-const mongoDBName = process.env.MONGODB_DB_NAME || 'local';
+const mongoURI = process.env.MONGODB_URI;
+const mongoDBName = process.env.MONGODB_DB_NAME;
+
+if (!mongoURI) {
+  throw new Error('MongoDB URI not found');
+}
+
+if (!mongoDBName) {
+  throw new Error('MongoDB name not found');
+}
 
 const client = new MongoClient(mongoURI);
 const db = client.db(mongoDBName);

@@ -8,6 +8,7 @@ import {
   testingRouter,
   videosRouter,
 } from './routes';
+import 'dotenv/config';
 
 const PORT = process.env.PORT || 5001;
 
