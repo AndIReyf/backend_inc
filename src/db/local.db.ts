@@ -1,4 +1,4 @@
-import { IDriver, IVideo, IBlog, IPost } from '../routes';
+import { IDriver, IVideo, IBlogSchema, IPostSchema } from '../routes';
 
 export enum DriverStatus {
   Online = 'Online',
@@ -8,8 +8,8 @@ export enum DriverStatus {
 interface IDB {
   drivers: IDriver[];
   videos: IVideo[];
-  blogs: IBlog[];
-  posts: IPost[];
+  blogs: IBlogSchema[];
+  posts: IPostSchema[];
 }
 
 export const db: IDB = {

@@ -1,6 +1,6 @@
 import { db } from '../../db';
 import { Request, Response } from 'express';
-import { IPost, IPostRequest } from '../../routes';
+import { IPostSchema, IPostRequest } from '../../routes';
 
 export const postControllersLdb = {
   getAllPosts: async (req: Request, res: Response) => {
@@ -17,9 +17,8 @@ export const postControllersLdb = {
     res.status(200).send(post);
   },
   createPost: async (req: IPostRequest, res: Response) => {
-    const newPost: IPost = {
-      id: db.posts.length ? String(db.posts.length + 1) : '1',
-      blogName: 'Blog Name',
+    const newPost: IPostSchema = {
+      id: String(Date.now() + Math.random()),
       ...req.body,
     };
 

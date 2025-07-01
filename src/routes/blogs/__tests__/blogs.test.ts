@@ -1,9 +1,9 @@
 import request from 'supertest';
 import { AppRoutes, createBasicAuthHeader } from '../../../core';
 import app from '../../../main';
-import { IBlog } from '../types';
+import { IBlogSchema } from '../types';
 
-const blog: IBlog = {
+const blog: IBlogSchema = {
   id: '1',
   name: 'Blog',
   description: 'Description',

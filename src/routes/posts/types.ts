@@ -1,14 +1,15 @@
 import { Request } from 'express';
 
-export interface IPost {
+export interface IPostSchema {
   id: string;
   title: string;
   shortDescription: string;
   content: string;
   blogId: string;
   blogName: string;
+  createdAt: string;
 }
 
 export interface IPostRequest extends Request {
-  body: Omit<IPost, 'id' | 'blogName'>;
+  body: Omit<IPostSchema, 'id' | 'createdAt'>;
 }

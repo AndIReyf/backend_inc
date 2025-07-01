@@ -1,18 +1,14 @@
 import { Request } from 'express';
 
-export enum BlogMandatoryFields {
-  name = 'name',
-  description = 'description',
-  websiteUrl = 'websiteUrl',
-}
-
-export interface IBlog {
+export interface IBlogSchema {
   id: string;
-  [BlogMandatoryFields.name]: string;
-  [BlogMandatoryFields.description]: string;
-  [BlogMandatoryFields.websiteUrl]: string;
+  createdAt: string;
+  isMembership: boolean;
+  name: string;
+  description: string;
+  websiteUrl: string;
 }
 
 export interface IBlogRequest extends Request {
-  body: IBlog;
+  body: Omit<IBlogSchema, 'id' | 'isMembership' | 'createdAt'>;
 }

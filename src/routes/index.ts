@@ -9,5 +9,9 @@ export {
   type IVideoCreateRequest,
   type IVideoUpdateRequest,
 } from './videos/types';
-export { type IBlog, type IBlogRequest } from './blogs/types';
-export { type IPost, type IPostRequest } from './posts/types';
+export {
+  type IBlogSchema,
+  type IBlogRequest,
+  BlogMandatoryFields,
+} from './blogs/types';
+export { type IPostSchema, type IPostRequest } from './posts/types';

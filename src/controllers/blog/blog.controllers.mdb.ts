@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { blogsDBCollection as db } from '../../db';
-import { IBlog, IBlogRequest } from '../../routes';
+import { IBlogSchema, IBlogRequest } from '../../routes';
 
 export const blogControllersMdb = {
   getAllBlogs: async (req: Request, res: Response) => {
@@ -26,9 +26,14 @@ export const blogControllersMdb = {
     }
   },
   createBlog: async (req: IBlogRequest, res: Response) => {
-    const newBlog: IBlog = {
-      ...req.body,
-      id: new Date().toISOString(),
+    const { name, description, websiteUrl } = req.body;
+    const newBlog: IBlogSchema = {
+      id: String(Date.now() + Math.random()),
+      isMembership: false,
+      createdAt: new Date().toISOString(),
+      name,
+      description,
+      websiteUrl,
     };
 
     try {

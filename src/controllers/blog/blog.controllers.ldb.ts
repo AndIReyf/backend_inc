@@ -1,6 +1,6 @@
 import { db } from '../../db';
 import { Request, Response } from 'express';
-import { IBlog, IBlogRequest } from '../../routes';
+import { IBlogSchema, IBlogRequest } from '../../routes';
 
 export const logControllersLdb = {
   getAllBlogs: async (req: Request, res: Response) => {
@@ -17,9 +17,10 @@ export const logControllersLdb = {
     res.status(200).send(blog);
   },
   createBlog: async (req: IBlogRequest, res: Response) => {
-    const newBlog: IBlog = {
+    const newBlog: IBlogSchema = {
+      id: String(Date.now() + Math.random()),
+      isMembership: false,
       ...req.body,
-      id: db.blogs.length ? String(db.blogs.length + 1) : '1',
     };
 
     db.blogs.push(newBlog);

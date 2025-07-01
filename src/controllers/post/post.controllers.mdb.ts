@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IPost, IPostRequest } from '../../routes';
+import { IPostSchema, IPostRequest } from '../../routes';
 import { postsDBCollection as db } from '../../db';
 
 export const postControllersMdb = {
@@ -26,10 +26,15 @@ export const postControllersMdb = {
     }
   },
   createPost: async (req: IPostRequest, res: Response) => {
-    const newPost: IPost = {
+    const { title, content, shortDescription, blogId, blogName } = req.body;
+    const newPost: IPostSchema = {
       id: String(Date.now() + Math.random()),
-      blogName: 'Blog Name',
-      ...req.body,
+      createdAt: new Date().toISOString(),
+      blogName: blogName ?? '',
+      blogId,
+      title,
+      content,
+      shortDescription,
     };
 
     try {

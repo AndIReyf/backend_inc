@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 import { processEnv } from '../core';
-import { IBlog, IPost } from '../routes';
+import { IBlogSchema, IPostSchema } from '../routes';
 
 const { mongoUri, mongoDBName } = processEnv;
 
@@ -28,5 +28,5 @@ export const connectMongoDB = async (): Promise<void> => {
   }
 };
 
-export const blogsDBCollection = db.collection<IBlog>('blogs');
-export const postsDBCollection = db.collection<IPost>('posts');
+export const blogsDBCollection = db.collection<IBlogSchema>('blogs');
+export const postsDBCollection = db.collection<IPostSchema>('posts');
