@@ -1,11 +1,10 @@
 import { MongoClient } from 'mongodb';
+import { processEnv } from '../core';
 import { IBlog, IPost } from '../routes';
-import 'dotenv/config';
 
-const mongoURI = process.env.MONGODB_URI;
-const mongoDBName = process.env.MONGODB_DB_NAME;
+const { mongoUri, mongoDBName } = processEnv;
 
-if (!mongoURI) {
+if (!mongoUri) {
   throw new Error('MongoDB URI not found');
 }
 
@@ -13,7 +12,7 @@ if (!mongoDBName) {
   throw new Error('MongoDB name not found');
 }
 
-const client = new MongoClient(mongoURI);
+const client = new MongoClient(mongoUri);
 const db = client.db(mongoDBName);
 
 export const connectMongoDB = async (): Promise<void> => {

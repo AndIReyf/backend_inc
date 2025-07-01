@@ -7,11 +7,11 @@ const formatErrors = (error: ValidationError) => {
   const err: IError = {};
 
   if ('path' in error) {
-    err.field = error.path
-    err.message = error.msg
+    err.field = error.path;
+    err.message = error.msg;
   }
 
-  return err
+  return err;
 };
 
 export const handleValidationErrors = (
@@ -22,7 +22,7 @@ export const handleValidationErrors = (
   const errors = validationResult(req).formatWith(formatErrors).array();
 
   if (errors.length > 0) {
-    res.status(400).send({errorsMessages: errors} as IErrorMsg);
+    res.status(400).send({ errorsMessages: errors } as IErrorMsg);
     return;
   }
 

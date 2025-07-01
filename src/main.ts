@@ -1,5 +1,5 @@
 import express, { Response, Request } from 'express';
-import { AppRoutes } from './core';
+import { AppRoutes, processEnv } from './core';
 import { connectMongoDB } from './db';
 import {
   blogsRouter,
@@ -8,9 +8,8 @@ import {
   testingRouter,
   videosRouter,
 } from './routes';
-import 'dotenv/config';
 
-const PORT = process.env.PORT || 5001;
+const { port } = processEnv;
 
 const app = express();
 app.use(express.json());
@@ -28,8 +27,8 @@ app.get(AppRoutes.default, (req: Request, res: Response) => {
 const startServer = async () => {
   await connectMongoDB();
 
-  app.listen(PORT, () => {
-    console.log(`Server started on port:`, PORT);
+  app.listen(port, () => {
+    console.log(`Server started on port:`, port);
   });
 };
 
