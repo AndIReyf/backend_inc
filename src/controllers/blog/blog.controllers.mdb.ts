@@ -5,7 +5,7 @@ import { IBlogSchema, IBlogRequest } from '../../routes';
 export const blogControllersMdb = {
   getAllBlogs: async (req: Request, res: Response) => {
     try {
-      const result = await db.find({}).toArray();
+      const result = await db.find({}, {projection: { _id: 0 }}).toArray();
       res.status(200).send(result);
     } catch (e) {
       console.error(e);
@@ -13,7 +13,7 @@ export const blogControllersMdb = {
   },
   getBlogById: async (req: Request, res: Response) => {
     try {
-      const result = await db.findOne({ id: req.params.id });
+      const result = await db.findOne({ id: req.params.id }, {projection: { _id: 0 }});
 
       if (!result) {
         res.status(404).send('Not Found');

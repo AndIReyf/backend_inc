@@ -7,8 +7,8 @@ const formatErrors = (error: ValidationError) => {
   const err: IError = {};
 
   if ('path' in error) {
-    err.field = error.path;
     err.message = error.msg;
+    err.field = error.path;
   }
 
   return err;
@@ -19,7 +19,9 @@ export const handleValidationErrors = (
   res: Response,
   next: NextFunction,
 ) => {
-  const errors = validationResult(req).formatWith(formatErrors).array();
+  const errors = validationResult(req)
+    .formatWith(formatErrors)
+    .array({ onlyFirstError: true });
 
   if (errors.length > 0) {
     res.status(400).send({ errorsMessages: errors } as IErrorMsg);

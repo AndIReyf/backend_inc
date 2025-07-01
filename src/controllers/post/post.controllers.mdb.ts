@@ -5,7 +5,7 @@ import { postsDBCollection as db } from '../../db';
 export const postControllersMdb = {
   getAllPosts: async (req: Request, res: Response) => {
     try {
-      const result = await db.find({}).toArray();
+      const result = await db.find({}, {projection: { _id: 0 }}).toArray();
       res.status(200).send(result);
     } catch (e) {
       console.error(e);
@@ -13,7 +13,7 @@ export const postControllersMdb = {
   },
   getPostById: async (req: Request, res: Response) => {
     try {
-      const result = await db.findOne({ id: req.params.id });
+      const result = await db.findOne({ id: req.params.id }, {projection: { _id: 0 }});
 
       if (!result) {
         res.status(404).send('Not Found');
